@@ -8,9 +8,10 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "_RUN"
             ],
-            "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+            "compilerPath": "C:\\mingw32\\bin\\gcc.exe",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],
