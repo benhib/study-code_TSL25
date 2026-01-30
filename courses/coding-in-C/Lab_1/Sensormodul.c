@@ -1,28 +1,36 @@
 #include <stdio.h>
 
 unsigned char status = 0xA7;
-int error = 0;
-int temperror = 0;
-int volterror = 0;
+int error[2];
+char errortype[3][17] = {"Fehler", "Übertemperatur", "Unterspannung"};
+
 int value = 0;
 
 void main () {
     if (status & 128) {
-        error = 1;
+        error[0] = 1;
     } 
     if (status & 64) {
-        temperror = 1;
+        error[1] = 1;
     } 
     if (status & 32) {
-        volterror = 1;
+        error[2] = 1;
     }
 
     value = status & 7;
 
-    printf("Fehler: %i\n", error);
-    printf("Übertemperatur: %i\n", temperror);
-    printf("Unterspannung: %i\n", volterror);
-    printf("Messwert: %i\n", value);
+    for (int i = 0; i <= 2; i++)
+    {
+        printf("Es ist ");
+        if (error[i]) {
+            printf("ein ");
+        } else {
+            printf("kein ");
+        }
+        printf("%s vorhanden.\n", errortype[i]);
+    }
+    
+    printf("Der Messwert beträgt %i.\n", value);
 }
 
 /*
