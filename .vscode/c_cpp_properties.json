@@ -4,7 +4,7 @@
         {
             "name": "Windows",
             "includePath": [
-                "${workspaceFolder}/**"
+                "c:/Users/Benhi/Desktop/programmieren/study-code/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,8 +12,14 @@
                 "_UNICODE",
                 "_RUN"
             ],
-            "compilerPath": "C:\\mingw32\\bin\\gcc.exe",
-            "intelliSenseMode": "windows-gcc-x64"
+            "compilerPath": "C:/MinGW/bin/gcc.exe",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPathInCppPropertiesJson": "C:/MinGW/bin/gcc.exe",
+            "mergeConfigurations": false,
+            "recursiveIncludes": {},
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true
+            }
         },
         {
             "name": "Linux",
@@ -34,8 +40,23 @@
             "defines": [
                 "_DEBUG"
             ],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "C:/MinGW/bin/gcc.exe",
             "intelliSenseMode": "macos-clang-x64"
+        },
+        {
+            "name": "wind",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\MinGW\\bin\\gcc",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x86"
         }
     ]
 }
