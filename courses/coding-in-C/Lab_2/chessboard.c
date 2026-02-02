@@ -1,11 +1,26 @@
 #include <stdio.h>
 
+//Global list of letters, mutiple use
 char col_lable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
 
-void chessboard_I() {
+//Function mapping for compiler
+void chessboard_I();
+void chessboard_II();
+void row_letter();
+void row_border();
 
-    for (int col = 8; col > 0; col--) //field starts at 8
+int main () {
+
+    chessboard_II();
+
+    return 0;
+}
+
+
+void chessboard_I() { //Section I; simple chessboard
+
+    for (int col = 8; col > 0; col--) //Board starts at 8
     {
         for (int row = 1; row < 9; row++)
         {
@@ -16,7 +31,7 @@ void chessboard_I() {
     
 }
 
-void row_letter() {
+void row_letter() { //Prints the row with the column letters
     printf(" ");
     for (int col = 0; col < 8; col++) //Letters on top
     {
@@ -25,7 +40,7 @@ void row_letter() {
     printf("\n");
 }
 
-void row_border() {
+void row_border() { //Prints the row with border markers
     char pattern[] = "+---";
     printf("  ");
     for (int i = 0; i < 8; i++)
@@ -35,7 +50,7 @@ void row_border() {
     printf("+  \n");
 }
 
-void chessboard_II() {
+void chessboard_II() { //Prints the chessboard with border, labeling and colored squares
     
     char black[] = "###";
     char white[] = "   ";
@@ -70,9 +85,3 @@ void chessboard_II() {
 
 
 
-int main () {
-
-    chessboard_II();
-
-    return 0;
-}
