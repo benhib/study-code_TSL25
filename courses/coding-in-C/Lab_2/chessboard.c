@@ -2,12 +2,7 @@
 
 char col_lable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
-int main () {
 
-    chessboard_II();
-
-    return 0;
-}
 
 void chessboard_I() {
 
@@ -20,6 +15,25 @@ void chessboard_I() {
         printf("\n");
     }
     
+}
+
+void row_letter() {
+    printf(" ");
+    for (int col = 0; col < 9; col++) //Letters on top
+    {
+            printf("%4c", col_lable[col]);
+    }
+    printf("\n");
+}
+
+void row_border() {
+    char pattern[] = "+---";
+    printf("  ");
+    for (int i = 0; i < 8; i++)
+    {
+        printf("%s", pattern);
+    }
+    printf("+  \n");
 }
 
 void chessboard_II() {
@@ -55,21 +69,11 @@ void chessboard_II() {
 
 }
 
-void row_letter() {
-    printf(" ");
-    for (int col = 0; col < 9; col++) //Letters on top
-    {
-            printf("%4c", col_lable[col]);
-    }
-    printf("\n");
-}
 
-void row_border() {
-    char pattern[] = "+---";
-    printf("  ");
-    for (int i = 0; i < 8; i++)
-    {
-        printf("%s", pattern);
-    }
-    printf("+  \n");
+
+int main () {
+
+    chessboard_II();
+
+    return 0;
 }

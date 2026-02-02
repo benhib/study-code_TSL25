@@ -17,7 +17,7 @@ void main () {
         error[2] = 1;
     }
 
-    value = status & 7;
+    value = status & 15; //0-3 bit -> 4 bit
 
     for (int i = 0; i <= 2; i++)
     {
