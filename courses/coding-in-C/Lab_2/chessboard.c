@@ -3,7 +3,6 @@
 char col_lable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
 
-
 void chessboard_I() {
 
     for (int col = 8; col > 0; col--) //field starts at 8
@@ -19,7 +18,7 @@ void chessboard_I() {
 
 void row_letter() {
     printf(" ");
-    for (int col = 0; col < 9; col++) //Letters on top
+    for (int col = 0; col < 8; col++) //Letters on top
     {
             printf("%4c", col_lable[col]);
     }
