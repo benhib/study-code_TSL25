@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 //Global list of letters, mutiple use
-char col_lable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+const char col_lable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
 
 //Function mapping for compiler
