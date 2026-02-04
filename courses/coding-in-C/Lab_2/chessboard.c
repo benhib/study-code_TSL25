@@ -22,7 +22,7 @@ void chessboard_I() { //Section I; simple chessboard
 
     for (int col = 8; col > 0; col--) //Board starts at 8
     {
-        for (int row = 1; row < 9; row++)
+        for (int row = 1; row < 8; row++)
         {
             printf("%c%i ", col_lable[row-1], col);
         }
@@ -75,10 +75,9 @@ void chessboard_II() { //Prints the chessboard with border, labeling and colored
         
     }
     printf("| %i\n", row);
+    row_border();
     }
     
-
-    row_border();
     row_letter();
 
 }
