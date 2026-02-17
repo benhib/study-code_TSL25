@@ -2,6 +2,27 @@
 #include <stdlib.h>
 #include <time.h>
 
+void sec_I() {
+    int x = 10;
+    int *p = &x;
+    int **pp = &p;
+
+    // TODO: complete the output statements
+    printf("x = %d\n", x);
+    printf("x via p = %d\n", *p);
+    printf("x via pp = %d\n", **pp);
+
+    /*
+    x       - int
+    p       - pointer
+    *p      - int
+    pp      - pointer (pointer)
+    *pp     - pointer
+    **pp    - int
+    */
+}
+
+
 int main() {
     srand(time(NULL));
     int particles[] = {0,0,0,0,0,0,0,0,0,0};
@@ -60,3 +81,5 @@ int main() {
 
     return 0;
 }
+
+
