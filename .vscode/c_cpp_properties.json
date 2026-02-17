@@ -22,6 +22,21 @@
             }
         },
         {
+            "name": "Windows-C++",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+            "intelliSenseMode": "windows-gcc-x64",
+            "cppStandard": "c++20",
+            "cStandard": "c17"
+        },
+        {
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**"
@@ -31,6 +46,19 @@
             ],
             "compilerPath": "/usr/bin/gcc",
             "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "Linux-C++",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "intelliSenseMode": "linux-gcc-x64",
+            "cppStandard": "c++20",
+            "cStandard": "c17"
         },
         {
             "name": "macOS",
@@ -44,11 +72,16 @@
             "intelliSenseMode": "macos-clang-x64"
         },
         {
+<<<<<<< HEAD
             "name": "wind",
+=======
+            "name": "macOS-C++",
+>>>>>>> upstream/main
             "includePath": [
                 "${workspaceFolder}/**"
             ],
             "defines": [
+<<<<<<< HEAD
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
@@ -57,6 +90,14 @@
             "cStandard": "c11",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "windows-gcc-x86"
+=======
+                "_DEBUG"
+            ],
+            "compilerPath": "/usr/bin/clang++",
+            "intelliSenseMode": "macos-clang-x64",
+            "cppStandard": "c++20",
+            "cStandard": "c17"
+>>>>>>> upstream/main
         }
     ]
 }
