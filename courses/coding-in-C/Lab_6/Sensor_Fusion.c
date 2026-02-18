@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-const int DATAPOINTS = 3000;
+enum { DATAPOINTS = 3000 };   
 
 typedef struct SensorData{
     float time;
     double probability;
-} ;
+} SensorData;
 
 typedef struct Sensor {
     int id;
     double threshold;
-    struct SensorData data[DATAPOINTS];
-    int object_detection[];
-};
+    SensorData data[DATAPOINTS];
+    int object_detection[DATAPOINTS];
+} Sensor;
 
 
 int main () {
@@ -29,14 +29,17 @@ int main () {
         return -1;
     }
 
+    
+
     for (int i = 0; i < DATAPOINTS; i++)
     {
-        if(fscanf(data1, "%f %f", psensor1->data->time + i, psensor1->data->probability + i) != 2) {
-            printf("Fehler beim Auswerten der Daten.\n");
+        if(fscanf(data1, "%f %lf", &psensor1->data[i].time, &psensor1->data[i].probability) != 2) {
+            printf("Fehler beim Auswerten der Daten1.\n");
             return -1;
         }
-        if(fscanf(data2, "%f %f", psensor2->data->time + i, psensor2->data->probability + i) != 2) {
-            printf("Fehler beim Auswerten der Daten.\n");
+        
+        if(fscanf(data2, "%f %lf", &psensor2->data[i].time, &psensor2->data[i].probability) != 2) {
+            printf("Fehler beim Auswerten der Daten1.\n");
             return -1;
         }
     }
