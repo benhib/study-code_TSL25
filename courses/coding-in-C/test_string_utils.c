@@ -3,9 +3,11 @@
 #include "string_utils.h"
 
 int main() {
-    char string[3] = "te";
+    char string[] = "Hello";
     int len = custom_len(string);
 
-    printf("Länge des Strings: %i", len);
+    printf("Länge des Strings: %i \n", len);
+
+    assert(custom_len("Hello") == 5);
 }
 
