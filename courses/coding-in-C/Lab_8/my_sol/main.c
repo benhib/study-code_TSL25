@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "include/playlist.h"
+#include "../include/playlist.h"
 
 
 int main() {

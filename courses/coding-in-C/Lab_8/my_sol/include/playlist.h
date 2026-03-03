@@ -1,7 +1,7 @@
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 
-#define MAX_SONGS
+#define MAX_SONGS 10
 
 
 typedef struct Song {
@@ -12,6 +12,7 @@ typedef struct Song {
 
 typedef struct Playlist {
     Song* first_song;
+    int len;
 } Playlist;
 
 // @brief initializes a playlist and returns a pointer to it

@@ -13,12 +13,17 @@ Playlist * init_playlist() {
     }
 
     playlist->first_song = NULL;
+    playlist->len = 0;
     printf("Playlist initialized.\n");
     return playlist;
 }
 
 // @brief takes a pointer to a playlist, a title and an artist and adds the song to the end of the playlist
 void add_song(Playlist * playlist, char title[], char artist[]) {
+    if(playlist->len >= MAX_SONGS) {
+        printf("Maximum playlist length reached!\n");
+        return;
+    }
     Song* new_song = malloc(sizeof(Song));
     if (new_song == NULL) {
         printf("Memory allocation failed.\n");
@@ -28,6 +33,7 @@ void add_song(Playlist * playlist, char title[], char artist[]) {
     new_song->title = malloc(strlen(title) + 1);
     new_song->artist = malloc(strlen(artist) + 1);
     new_song->next = NULL;
+    
 
     if (new_song->title == NULL || new_song->artist == NULL) {
         printf("Memory allocation failed.\n");
@@ -42,6 +48,7 @@ void add_song(Playlist * playlist, char title[], char artist[]) {
 
     if(playlist->first_song == NULL) {
         playlist->first_song = new_song;
+        playlist->len++;
         printf("Added %s by %s to the playlist.\n", title, artist);
         return;
     }
@@ -50,9 +57,15 @@ void add_song(Playlist * playlist, char title[], char artist[]) {
         iter_song = iter_song->next;
     }
 
+
     iter_song->next = new_song;
 
+
+    playlist->len++;
+
     printf("Added %s by %s to the playlist.\n", title, artist);
+
+    
     
 }
 
@@ -77,8 +90,13 @@ void print_playlist(Playlist * playlist) {
 
 // @brief takes a pointer to a playlist and deletes the first song in the playlist or prints a message if the playlist is empty or does not exist
 void delete_firstSong(Playlist * playlist) {
-    if (playlist == NULL || playlist->first_song == NULL) {
+    if (playlist == NULL) {
         printf("The playlist is empty or does not exist.\n");
+        return;
+    }
+
+    if(playlist->first_song == NULL) {
+        printf("There is no song in the playlist.\n");
         return;
     }
 
@@ -90,6 +108,8 @@ void delete_firstSong(Playlist * playlist) {
     free(song->artist);
     free(song->title);
     free(song);
+
+    playlist->len--;
         
 }
 
@@ -108,7 +128,7 @@ void delete_playlist(Playlist * playlist) {
     free(playlist);
     
     playlist->first_song = NULL;
-    playlist = NULL;
+    playlist->len = 0;
 
     printf("Deleted the playlist.\n");
 }
