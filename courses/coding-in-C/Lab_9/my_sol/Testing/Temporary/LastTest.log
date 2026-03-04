@@ -1,0 +1,25 @@
+Start testing: Mar 04 15:24 UTC
+----------------------------------------------------------
+1/1 Testing: PlaylistUnitTests
+1/1 Test: PlaylistUnitTests
+Command: "/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/test_playlist"
+Directory: /workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol
+"PlaylistUnitTests" start time: Mar 04 15:24 UTC
+Output:
+----------------------------------------------------------
+Playlist initialized.
+Added This Is a Test by Armin Van Buuren to the playlist.
+len: 1
+Removed This Is a Test by Armin Van Buuren from the playlist.
+There is no song in the playlist.
+Deleted the playlist.
+Alle Playlist-Tests erfolgreich bestanden.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"PlaylistUnitTests" end time: Mar 04 15:24 UTC
+"PlaylistUnitTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 04 15:24 UTC

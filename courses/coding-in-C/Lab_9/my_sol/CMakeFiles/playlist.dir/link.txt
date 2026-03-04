@@ -1,0 +1,2 @@
+/usr/bin/ar qc libplaylist.a CMakeFiles/playlist.dir/src/playlist.c.o
+/usr/bin/ranlib libplaylist.a

@@ -1,0 +1,7 @@
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/playlist.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/test_playlist.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/run_tests.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/playlist_app.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/test.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/edit_cache.dir
+/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/CMakeFiles/rebuild_cache.dir

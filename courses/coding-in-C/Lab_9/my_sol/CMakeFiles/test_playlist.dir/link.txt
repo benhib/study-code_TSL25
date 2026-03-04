@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/test_playlist.dir/test/test_playlist.c.o -o test_playlist  libplaylist.a 

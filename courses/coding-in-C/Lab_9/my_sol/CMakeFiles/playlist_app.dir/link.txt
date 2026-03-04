@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/playlist_app.dir/main.c.o CMakeFiles/playlist_app.dir/src/playlist.c.o -o playlist_app  libplaylist.a 
