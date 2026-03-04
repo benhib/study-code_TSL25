@@ -1,10 +1,10 @@
-Start testing: Mar 04 15:24 UTC
+Start testing: Mar 04 18:29 UTC
 ----------------------------------------------------------
 1/1 Testing: PlaylistUnitTests
 1/1 Test: PlaylistUnitTests
 Command: "/workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol/test_playlist"
 Directory: /workspaces/study-code_TSL25/courses/coding-in-C/Lab_9/my_sol
-"PlaylistUnitTests" start time: Mar 04 15:24 UTC
+"PlaylistUnitTests" start time: Mar 04 18:29 UTC
 Output:
 ----------------------------------------------------------
 Playlist initialized.
@@ -18,8 +18,8 @@ Alle Playlist-Tests erfolgreich bestanden.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"PlaylistUnitTests" end time: Mar 04 15:24 UTC
+"PlaylistUnitTests" end time: Mar 04 18:29 UTC
 "PlaylistUnitTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Mar 04 15:24 UTC
+End testing: Mar 04 18:29 UTC

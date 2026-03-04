@@ -167,56 +167,64 @@ int count_songs_recursive(const Song *current) {
 
 }
 
+
+// @brief not my function but a really cool way to convert a String to lowercase
+char *to_lower_case(char *str) {
+    char *new_str;
+    while (*str) {
+        *new_str = tolower((unsigned char)*str);
+        str++;
+    }
+
+    return new_str;
+}
+
+
 // @brief sorts the playlist by title
 void sort_playlist_by_title(Playlist *playlist) {
 
-    Song *current = playlist->first_song;
-    Song *next_c = current->next;
+    Song *current;
+    Song *next_c;
 
-    if(current == NULL || next_c == NULL) {
-        printf("Invalid playlist to sort.\n");
-        return;
-    }
+    int finished = FALSE;
 
-    while(next_c != NULL) {
-        char *name_c = current->title;
-        char *name_n = next_c->title;
-        int longest = 0;
+    while (!finished) {
 
-        // for safety against seg-faults
-        if (strlen(name_c) > strlen(name_n)) {
-            longest = strlen(name_c);
-        } else {
-            longest = strlen(name_n);
-        }
+        finished = TRUE;
 
-        for (int c = 0; c < longest; c++) {
-            
-            if(tolower(*(name_c+c)) > tolower(*(name_n+c))) {
-                    // next song comes before first
+        current = playlist->first_song;
+        // not necesarry, but for better overview
+        next_c = current->next;
 
-                char *tmp = current->artist;
-                current->artist = next_c->artist;
-                next_c->artist = tmp;
+         while (next_c != NULL) {
 
-                tmp = current->title;
+            // checks if second string comes before first one 
+            if (strcasecmp(current->title, next_c->title)  > 0) {
+                
+                // swaps the title and artist but not the song itself
+                char *tmp = current->title;
                 current->title = next_c->title;
                 next_c->title = tmp;
 
+                tmp = current->artist;
+                current->artist = next_c->artist;
+                next_c->artist = tmp;
 
+                finished = FALSE;
 
-            } else {
-                printf("%s comes before %s.\n", current->title, next_c->title);
-                // current song in right position
-                current = next_c;
-                next_c = next_c->next;
             }
+
+            current = next_c;
+            next_c = next_c->next;
+            
         }
+
         
         
     }
-    
+
     printf("Playlist sorted.\n");
+    
 
 }
 

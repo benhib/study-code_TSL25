@@ -2,6 +2,8 @@
 #define PLAYLIST_H
 
 #define MAX_SONGS 10
+#define TRUE 1
+#define FALSE 0
 
 
 typedef struct Song {
@@ -39,6 +41,10 @@ Song* find_song_by_title(Playlist *playlist, const char *title);
     
 // @brief counts the number of songs in the playlist
 int count_songs_recursive(const Song *current);
+
+
+// @brief not my function but a really cool way to convert a String to lowercase
+char *to_lower_case(char *str);
 
 // @brief sorts the playlist by title
 void sort_playlist_by_title(Playlist *playlist);
