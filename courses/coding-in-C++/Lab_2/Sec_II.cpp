@@ -38,7 +38,7 @@ int main() {
      -> the compiler tries to free the same pointer twice
     
     Solution:
-    defined constructor that creates it'ts own allocated memory
+    defined constructor that creates it's own allocated memory
      */
 
 } 
