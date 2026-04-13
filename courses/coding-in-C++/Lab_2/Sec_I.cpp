@@ -7,8 +7,8 @@ class BankAccount {
         double balance;
 
     public:
-        void setOwner(std::string new_owner) {
-            owner = new_owner;
+        void setOwner(std::string owner) {
+            this->owner = owner;
         };
 
         std::string getOwner() {
@@ -16,27 +16,27 @@ class BankAccount {
         };
 
         void deposit(double deposit) {
-            if (deposit < 0) {
+            if (deposit <= 0) {
                 std::cout << "Deposits can't be less than 0$\n";
                 return;
             }
 
-            balance += deposit;
+            this->balance += deposit;
             std::cout << "You've deposited " << deposit << "$ in your account\n";
         };
 
         void withdraw(double withdrawl) {
-            if (withdrawl < 0) {
+            if (withdrawl <= 0) {
                 std::cout << "Withdrawls can't be less than 0$\n";
                 return;
             }
 
-            if(balance < withdrawl) {
+            if(this->balance < withdrawl) {
                 std::cout << "You don't have enough money in your account\n";
                 return;
             }
 
-            balance -= withdrawl;
+            this->balance -= withdrawl;
             std::cout << "You've withdrawn " << withdrawl << "$ from your account\n";
         };
 
@@ -47,12 +47,12 @@ class BankAccount {
 };
 
 double BankAccount::getBalance() {
-        return balance;
+        return this->balance;
     }
 
     void BankAccount::getAccountInfo() {
-        std::cout << "Owner: " << owner << "\n";
-        std::cout << "Balance: " << balance << "$\n";
+        std::cout << "Owner: " << this->owner << "\n";
+        std::cout << "Balance: " << this->balance << "$\n";
     }
 
 int main() {
