@@ -51,7 +51,7 @@ void calculateGrade(uint_least16_t& homework, uint_least16_t& midterm, uint_leas
     }
 }
 
-void printReport (const uint_least16_t& homework, const uint_least16_t& midterm, const uint_least16_t& finalExam, 
+void printReport (const std::String& name,const uint_least16_t& homework, const uint_least16_t& midterm, const uint_least16_t& finalExam, 
                    const double& finalGrade, const std::string& letterGrade) {
     std::string status = " ";
 
@@ -61,7 +61,15 @@ void printReport (const uint_least16_t& homework, const uint_least16_t& midterm,
         status = "CONDITIONAL PASS";
     }
 
-    std::setw(15);
-    std::setprecision()
+    std::setw(35);
+    std::setprecision(2);
 
+    std::cout << "-----------------------------------\n";
+    std::cout << "Student Report\n";
+    std::cout << "-----------------------------------\n";
+    std::cout << "Name: " << name << "\n";
+    std::cout << "\n";
+    std::cout << "Scores\n";
+    std::cout << "-----------------------------------\n";
+    std::cout << "Homework: " << name << "\n";
 }
