@@ -1,8 +1,12 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <cstdint>
+#include <iomanip>
+#include "report_utils.hpp"
 
-int getAndCheckInput(std::string message) {
+
+int getAndCheckInput (std::string message) {
     bool is_entered = false;
     uint_least16_t value = 0;
 
@@ -14,27 +18,30 @@ int getAndCheckInput(std::string message) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             std::cout << "You did not enter a number.\n";
+            continue;
         }
 
         if(value < 0 || value > 100) {
             std::cout << "The value is out of the point range.\n";
+            continue;
         }
+        is_entered = true;
     }
     return value;
 }
 
 void readStudentData(std::string& name, uint_least16_t& homework, uint_least16_t& midterm, uint_least16_t& finalExam) {
     std::cout << "Student name: ";
-    std::getline(std::cin << std::ws, name);
+    std::getline(std::cin >> std::ws, name);
 
     homework = getAndCheckInput("Homework score: ");
     midterm = getAndCheckInput("Miterm score: ");
     finalExam = getAndCheckInput("Final exam score: ");
 }
 
-void calculateGrade(uint_least16_t& homework, uint_least16_t& midterm, uint_least16_t& finalExam, 
+void calculateGrade(const uint_least16_t& homework, const uint_least16_t& midterm, const uint_least16_t& finalExam, 
                     double& finalGrade, std::string& letterGrade) {
-    finalGrade = static_cast <double> ((0.4 * homework + 0.25 * midterm + 0.35 * finalExam) / 3); //calculates the final grade based on the given weight
+    finalGrade = static_cast <double> (0.4 * homework + 0.25 * midterm + 0.35 * finalExam); //calculates the final grade based on the given weight
 
     if (finalGrade >= 90) {
         letterGrade = "A";
@@ -51,7 +58,7 @@ void calculateGrade(uint_least16_t& homework, uint_least16_t& midterm, uint_leas
     }
 }
 
-void printReport (const std::String& name,const uint_least16_t& homework, const uint_least16_t& midterm, const uint_least16_t& finalExam, 
+void const printReport (const std::string& name,const uint_least16_t& homework, const uint_least16_t& midterm, const uint_least16_t& finalExam, 
                    const double& finalGrade, const std::string& letterGrade) {
     std::string status = " ";
 
@@ -59,10 +66,9 @@ void printReport (const std::String& name,const uint_least16_t& homework, const 
         status = "FAIL";
     } else if (letterGrade == "D" || letterGrade == "E") {
         status = "CONDITIONAL PASS";
+    } else {
+        status = "PASS";
     }
-
-    std::setw(35);
-    std::setprecision(2);
 
     std::cout << "-----------------------------------\n";
     std::cout << "Student Report\n";
@@ -71,5 +77,11 @@ void printReport (const std::String& name,const uint_least16_t& homework, const 
     std::cout << "\n";
     std::cout << "Scores\n";
     std::cout << "-----------------------------------\n";
-    std::cout << "Homework: " << name << "\n";
+    std::cout << "Homework: " << homework  << std::endl;
+    std::cout << "Mitderm: " << midterm  << std::endl;
+    std::cout << "Final Exam: " << finalExam << std::endl << std::endl;
+    std::cout << "Final Grade: " << finalGrade  << std::endl;
+    std::cout << "Letter Grade: " << letterGrade  << std::endl;
+    std::cout << "Status: " << status  << std::endl;
+    std::cout << "-----------------------------------\n";
 }
