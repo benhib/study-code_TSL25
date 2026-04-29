@@ -1,72 +1,96 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-using namespace std; //never use using
 
-class Article { //deconstructor missing
-public:
-    // public 
-    string name;
+
+class Article {
+private:
+    std::string name;
     double price;
     int stock;
-    string* category; //why pointer
-    int id; //missing check
+    std::string category;
+    int id; 
 
-    Article(string name, double price, int stock, string category, int id) {
-        name = name; // name conflict -> initialize with Article (): name(name), ... {}
-        price = price; // same here
-        stock = stock; // same here
-        this->id = id;
-        this->category = new string; 
-        *this->category = category; //dereferencing the wrong object (needs to be this->category* = category;)
-    }
+public:
+    Article(std::string name, double price, int stock, std::string category, int id) : name(name), price(price), stock(stock), category(category), id(id) {};
 
-    void setPrice(double price) { //parameter check missing
-        price = price; // name error use tihs->price = price;
-    }
+    void setPrice(double price);
 
-    void sell(int amount) { //parameter check missing
-        stock = stock - amount; //incosistent with restock, also use this for more safety
+    void sell(int amount);
+
+    void restock(int amount);
+
+    void applyDiscount(double percent) { 
+        if (percent < 0 || percent > 100) {        
+            this->price = this->price - this->price * percent / 100;
         }
-
-    void restock(int amount) { //parameter check missing
-        this->stock += amount;
     }
 
-    double applyDiscount(double percent) { //this edits the price of the object but should just return the value (use const and just return) also parameter check
-        price = price - price * percent / 100;
-        return price; 
+    double const getPrice() { 
+        return this->price; 
     }
 
-    double getPrice() { //const missing
-        return price; //use this->
+    bool const isAvailable() { 
+        return stock > 0;
     }
 
-    bool isAvailable() { //no braces in if + const missing
-        if (stock > 0) //use this
-            return true; // just use return stock > 0
-        else
-            return false;
-    }
-
-    void printInfo() { //define out of class
-        cout << "Article: " << name << endl;
-        cout << "Category: " << *category << endl;
-        cout << "Price: " << price << endl;
-        cout << "Stock: " << stock << endl;
-        cout << "ID: " << id << endl;
-    }
+    void const printInfo();
 };
 
+void Article::setPrice(double price) {
+    if (price < 0) {
+        std::cout << "Price can't be negative\n";
+    } else { 
+    this->price = price;
+    std::cout << "Set price of " << this->name << "to " << this->price << "€\n";
+    }
+}
+void Article::sell(int amount) {
+    if (amount < 0) {
+        std::cout << "You can't sell a negative amount\n";
+    } else if (amount > this->stock) {
+        std::cout << "You can't sell more than you own\n";
+    } else {
+        this->stock -= amount;
+        std::cout << "Sold " << amount << " " << this->name << "\n";
+    }
+}
+
+void Article::restock(int amount) {
+    if (amount < 0) {
+        std::cout << "You can't restoc a negative amount\n";
+    } else {
+        this->stock +=amount;
+        std::cout << "Restocked " << amount << " " << this->name << "\n";
+    }
+}
+
+void const Article::printInfo() { 
+    using namespace std;
+    cout << "Article: " << name << std::endl;
+    cout << "Category: " << category << std::endl;
+    cout << "Price: " << price << std::endl;
+    cout << "Stock: " << stock << std::endl;
+    cout << "ID: " << id << std::endl;
+}
+
+
+
 int main() {
-    Article a("Laptop", 999.99, 10, "Electronics", 101);
+    Article article1("Laptop", 999.99, 10, "Electronics", 101);
 
-    a.sell(15); //invalid with parameter check
-    a.restock(-5); // with parameter check invalid
-    a.price = -100; // never change directly
-    a.applyDiscount(150); //invalid with parameter check
+    article1.sell(15); 
+    article1.restock(-5); 
+    article1.setPrice(-100); 
+    article1.applyDiscount(150); 
 
-    if (a.isAvailable()) cout << "Article available" << endl; //braces
+    article1.sell(9); 
+    article1.restock(5); 
+    article1.setPrice(500); 
+    article1.applyDiscount(90.02);
 
-    a.printInfo();
+    if (article1.isAvailable()) {
+        std::cout << "Article available" << std::endl; 
+    }
+    article1.printInfo();
 }
