@@ -1,5 +1,6 @@
 {
 
     "C_Cpp.errorSquiggles": "enabled",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.sourceDirectory": "/workspaces/study-code_TSL25/courses/coding-in-C++/Lab_7"
 }

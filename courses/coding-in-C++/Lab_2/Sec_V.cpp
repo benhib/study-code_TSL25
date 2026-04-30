@@ -42,7 +42,7 @@ void Article::setPrice(double price) {
         std::cout << "Price can't be negative\n";
     } else { 
     this->price = price;
-    std::cout << "Set price of " << this->name << "to " << this->price << "€\n";
+    std::cout << "Set price of " << this->name << " to " << this->price << "€\n";
     }
 }
 void Article::sell(int amount) {
