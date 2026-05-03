@@ -56,21 +56,21 @@ int main() {
     Student student =  Student("Student", 0);
     Instructor in = Instructor("Dr. Instructor", 1);
 
-    /*
     student.setGrade(3.1);
 
     in.setRating(7.3);
 
     std::cout << "printInfo(): \n";
+
     student.printInfo();
-    std::cout <<"\n";
-    in.printInfo(); 
+    in.printInfo();
+    
 
     std::cout << "printRole(): \n";
     student.printRole();
-    std::cout <<"\n";
+    
     in.printRole(); 
 
-    */
+    
 }
 
