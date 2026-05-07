@@ -125,7 +125,7 @@ class Inventory {
 
         @return the used slots
         */
-       std::uint_least16_t getItemCount() {
+       std::uint_least16_t getItemCount() const{
             return this->used_slots;
        }
 

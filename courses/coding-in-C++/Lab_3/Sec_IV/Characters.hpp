@@ -5,6 +5,8 @@
 #include <cstdint>
 #include "Inventory.hpp"
 
+
+//@brief abstract Character class
 class Character {
     friend class Healer;
 
@@ -50,7 +52,7 @@ class Character {
 
 
         /*
-        @brief checks if a player should level up
+        @brief checks if a player should level up and levels them up
 
         @return void
         */
@@ -64,21 +66,53 @@ class Character {
         */
         virtual Character& printInfo()  =0;
 
-        std::uint_least16_t getHP() const{
+        /*
+        @brief gets the health points of a character
+
+        @return health points
+        */
+        const std::uint_least16_t getHP() const{
             return this->health_points;
         }
 
+
+        /*
+        @brief makes the Character take damage
+
+        @param[1] damage: the damage the Character should take
+
+        @return void
+        */
         void takeDamage(std::uint_least16_t damage) {
             this->health_points -= damage;
         }
 
+
+        /*
+        @brief makes a Character attack a target and deals damage to the target
+
+        @param[1] target: the Character to attack
+
+        @return void
+        */
         void attack(Character& target);
 
-        std::uint_least16_t getLevel() const {
+
+        /*
+        @brief gets the level of the Character
+
+        @return level
+        */
+        const std::uint_least16_t getLevel() const {
             return this->level;
         }
 
-        std::string getName() const {
+        /*
+        @brief gets the name of the Character
+
+        @return name
+        */
+        const std::string getName() const {
             return this->name;
         }
 
@@ -86,7 +120,7 @@ class Character {
 };
 
 
-
+// @brief Mage class extending Character
 class Mage : public Character {
     protected:
         std::uint_least16_t mana_points;
@@ -94,29 +128,58 @@ class Mage : public Character {
     public:
         Character& printInfo() override;
 
+        /*
+        @brief gives the Mage experience points and lets them level up
+
+        @param[1] regen: the amount of experience/mana points to add
+
+        @return *this
+        */
         Mage& regenerateMana(std::uint_least16_t regen) {
             this->mana_points += regen;
             this->levelUp();
             return *this;
         }
 
+        /*
+        @brief creates a new Mage
+
+        @param[1] name: the name to give the Mage
+
+        @return new Mage
+        */
         Mage(std::string name) : Character(name), mana_points(0) {};
 
         void levelUp() override;
 };
 
+
+//@brief Healer class extending Mage (friend of Character)
 class Healer : public Mage {
-    friend Character;
 
     public:
         Character& printInfo() override;
 
+        /*
+        @brief creates a new Healer
 
+        @param[1] name: the name to give the Healer
+
+        @return new Healer
+        */
         Healer(std::string name) : Mage(name){};
 
+        /*
+        @brief heals the target based on the level
+
+        @param[1] target: the target to heal
+
+        @return *this
+        */
         Healer& heal(Character& target);
 };
 
+//@brief Warrior class extending Character
 class Warrior : public Character {
     protected:
         std::uint_least16_t weapon_points;
@@ -124,6 +187,13 @@ class Warrior : public Character {
     public:
         Character& printInfo() override;
 
+        /*
+        @brief gives the Warrior experience points and lets them level up
+
+        @param[1] regen: the amount of experience/weapon points to add
+
+        @return *this
+        */
          Warrior& regenerateWeapon(std::uint_least16_t regen) {
             this->weapon_points += regen;
             this->levelUp();
@@ -132,16 +202,38 @@ class Warrior : public Character {
 
         void levelUp() override;
 
-        Warrior(std::string name) : Character(name){};
+        /*
+        @brief creates a new Warrior
+
+        @param[1] name: the name to give the Warrior
+
+        @return new Warrior
+        */
+        Warrior(std::string name) : Character(name), weapon_points(0){};
 };
 
+//@brief Thief class extending Warrior
 class Thief : public Warrior {
 
     public:
         Character& printInfo() override;
 
+        /*
+        @brief lets the Thief steal the last item of the target, if conditions are met
+
+        @param[1] target: the target to steal from
+
+        @return *this
+        */
         Thief& steal(Character& target);
 
+        /*
+        @brief creates a new Thief
+
+        @param[1] name: the name to give the Thief
+
+        @return new Thief
+        */
         Thief(std::string name) : Warrior(name) {};
 };
 
