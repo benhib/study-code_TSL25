@@ -1,5 +1,7 @@
 #include <iostream>
 
+constexpr float ALARM_TEMP = 30.0f;
+
 class Display
 {
 public:
@@ -18,6 +20,15 @@ public:
     }
 };
 
+class Alarm {
+    public:
+    void alarm_for_temp(float value) {
+        if(value > ALARM_TEMP) {
+            std::cout << "Alarm! Temp is larger than 30°C\n";
+        }
+    }
+};
+
 class TemperatureSensor
 {
 private:
@@ -25,6 +36,7 @@ private:
 
     Display display;
     Logger logger;
+    Alarm alarm;
 
 public:
     void set_temperature(float value)
@@ -34,6 +46,9 @@ public:
         // directly coupled to other classes
         display.show_temperature(temperature);
         logger.log_temperature(temperature);
+        alarm.alarm_for_temp(temperature);
+
+        //not possible to add cloud without changing Sensor code
     }
 };
 

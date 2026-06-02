@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+constexpr float ALARM_TEMP = 30.0f;
+
 // ======================================================
 // Observer Interface
 // ======================================================
@@ -72,6 +74,22 @@ public:
     }
 };
 
+class Alarm : public Observer {
+    public:
+        void update(float value) override {
+            if(value > ALARM_TEMP) {
+                std::cout << "Alarm! Temperature is larger than 30°C\n";
+            }
+        }
+};
+
+class Cloud : public Observer {
+    public:
+        void update(float value) override {
+                std::cout << "Publishing" << value << " to cloud\n";
+        }
+};
+
 // ======================================================
 // Main
 // ======================================================
@@ -82,9 +100,13 @@ int main()
 
     Display display;
     Logger logger;
+    Alarm alarm;
+    Cloud cloud;
 
     sensor.add_observer(&display);
     sensor.add_observer(&logger);
+    sensor.add_observer(&alarm);
+    sensor.add_observer(&cloud);
 
     sensor.set_temperature(23.5f);
 

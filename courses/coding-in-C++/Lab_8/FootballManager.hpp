@@ -3,7 +3,7 @@
 
 #include <string>
 
-class Player
+class Player // not abstract virtual deconstructor missing
 {
 private:
     std::string name;
@@ -27,11 +27,12 @@ public:
     void train(int intensity) override;
 };
 
-class ClubService
+class ClubService //Interface segregation
 {
 public:
     virtual ~ClubService() = default;
 
+    // Single Responsibility
     virtual void train_player(Player &player, int intensity) = 0;
     virtual void save_player(const Player &player) = 0;
     virtual void notify_player(const Player &player, const std::string &message) = 0;
@@ -54,6 +55,7 @@ class FootballManager : public ClubService
 private:
     void select_strategy(const std::string &strategy);
 
+    // Dependency Inversion -> just make notifier and saver
     FilePlayerRepository repository;
     EmailNotifier notifier;
 
@@ -62,6 +64,8 @@ public:
 
     void prepare_player(Player &player, const std::string &strategy);
 
+
+    //Single responsibility
     void train_player(Player &player, int intensity) override;
     void save_player(const Player &player) override;
     void notify_player(const Player &player, const std::string &message) override;

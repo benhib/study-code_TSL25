@@ -39,7 +39,7 @@ InjuredPlayer::InjuredPlayer(const std::string &name, int age)
 
 void InjuredPlayer::train(int intensity)
 {
-    if (intensity > 30)
+    if (intensity > 30) // Violation against LSP
     {
         std::cout << "ERROR: Injured players only accept intensity values up to 30.\n";
         return;
@@ -89,6 +89,8 @@ void FootballManager::notify_player(const Player &player, const std::string &mes
 
 void FootballManager::select_strategy(const std::string &strategy)
 {
+
+    //Open Closed
     if (strategy == "offensive")
     {
         std::cout << "Strategy: offensive pressing.\n";

@@ -8,14 +8,16 @@
 class Vehicle
 {
 private:
-    std::string model;
+    const std::string model;
     double speed_kmh;
+    const double max_speed_kmh;
     double steering_angle;
     double lane_offset_m;
     bool brake_light_on;
 
+
 public:
-    Vehicle(const std::string &vehicle_model);
+    Vehicle(const std::string &vehicle_model, const double max_speed);
 
     void accelerate(double amount_kmh);
     void brake(double amount_kmh);
@@ -26,7 +28,7 @@ public:
     double get_steering_angle() const;
     double get_lane_offset() const;
 
-    std::string &get_model();
+    const std::string &get_model() const;
 
     bool is_brake_light_on() const;
 

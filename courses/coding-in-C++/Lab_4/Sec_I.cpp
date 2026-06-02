@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 
+static int eps = 1e-9;
+
 class Vector2D {
     private:
         double x, y;
@@ -41,11 +43,14 @@ class Vector2D {
         }
 
         
+
+        
 };
 
     Vector2D operator+ (const Vector2D& vec1, const Vector2D& vec2) {
             return Vector2D(vec1.getX() + vec2.getX(), vec1.getY() + vec2.getY());
         }
+
 
     Vector2D operator* (const double skal,const  Vector2D& vec) {
         return Vector2D(skal * vec.getX(), skal * vec.getY()) ;
@@ -55,12 +60,40 @@ class Vector2D {
         return skal * vec;
     }
 
+    std::ostream& operator<<(std::ostream& stream, const Vector2D& vec) {
+        return stream << "Vector: " << vec.getLength(2) <<" (" << vec.getX() << "|" << vec.getY() << ")";
+    }
+
+    bool nearlyEqual(double a, double b, double tol) {
+        return std::fabs(a - b) < tol;
+    }
+
+    bool operator== (const Vector2D& vec1, const Vector2D& vec2) {
+        return nearlyEqual(vec1.getLength(), vec2.getLength(), eps);
+    }
+
+    bool operator> (const Vector2D& vec1, const Vector2D& vec2) {
+        return vec1.getLength() > vec2.getLength();
+    }
+
+    bool operator>= (const Vector2D& vec1, const Vector2D& vec2) {
+        return vec1 > vec2 || vec1 == vec2;
+    }
+
+    bool operator< (const Vector2D& vec1, const Vector2D& vec2) {
+        return vec1.getLength() < vec2.getLength();
+    }
+
+    bool operator<= (const Vector2D& vec1, const Vector2D& vec2) {
+        return vec1 < vec2 || vec1 == vec2;
+    }
+
 
 int main() {
     Vector2D vec1 = Vector2D(1.5, 2.5);
     Vector2D vec2 = Vector2D(3.4, 4.3);
 
-    Vector2D vecadd = vec1 + vec2;
+    Vector2D vecadd = vec1 + vec2; 
     vecadd.print();
 
     Vector2D vecmult = 2.0 * vec2;
@@ -69,5 +102,9 @@ int main() {
     vec1 += vec2;
 
     vec1.print();
+
+    std::cout << vec2 << std::endl;
+
+    std::cout << (vec1 > vec2) << std::endl;
 
 }
